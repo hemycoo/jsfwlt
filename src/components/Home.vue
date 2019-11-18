@@ -1,23 +1,45 @@
 <template>
   <el-container>
     <el-header>
-      <div>
-        <nav v-bind:class="active" v-on:click.prevent>
-          <a href="#" class="headerProjectName" v-on:click="makeActive('home')">论坛</a>
-          <a href="#" class="headerFirstPage" v-on:click="makeActive('firstPage')">首页</a>
-          <a href="#" class="headerTuCao" v-on:click="makeActive('tuCao')">吐槽</a>
-          <a href="#" class="headerLogIn" v-on:click="makeActive('logIn')">登录</a>
-          <a href="#" class="headerLogOut" v-on:click="makeActive('logOut')">退出</a>
-        </nav>
-      </div>
+      <el-menu
+        :default-active="activeIndex"
+        class="el-menu-demo"
+        mode="horizontal"
+        @select="handleSelect"
+      >
+        <el-menu-item index="1">首页</el-menu-item>
+        <el-submenu index="2">
+          <template slot="title">我的工作台</template>
+          <el-menu-item index="2-1">选项1</el-menu-item>
+          <el-menu-item index="2-2">选项2</el-menu-item>
+          <el-menu-item index="2-3">选项3</el-menu-item>
+          <el-submenu index="2-4">
+            <template slot="title">选项4</template>
+            <el-menu-item index="2-4-1">选项1</el-menu-item>
+            <el-menu-item index="2-4-2">选项2</el-menu-item>
+            <el-menu-item index="2-4-3">选项3</el-menu-item>
+          </el-submenu>
+        </el-submenu>
+        <el-menu-item index="3" disabled>消息中心</el-menu-item>
+        <el-menu-item index="4">
+          <a href="https://www.ele.me" target="_blank">订单管理</a>
+        </el-menu-item>
+      </el-menu>
     </el-header>
-    <el-main>Main</el-main>
+    <el-main>
+      <router-view></router-view>
+    </el-main>
     <el-footer>Footer</el-footer>
   </el-container>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {}
+  },
+  methods: {}
+}
 </script>
 
 <style scoped>
@@ -42,101 +64,5 @@ export default {}
   color: #111;
   text-align: center;
   line-height: 60px;
-}
-
-a,
-a:visited {
-  outline: none;
-  color: #389dc1;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-section,
-footer,
-header,
-aside,
-nav {
-  display: block;
-}
-
-nav {
-  display: inline-block;
-  /* margin: 60px auto 45px; */
-  background-color: #ffffff;
-  box-shadow: 0 1px 1px #ccc;
-  border-radius: 2px;
-}
-
-nav a {
-  display: inline-block;
-  padding: 18px 30px;
-  color: #000 !important;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none !important;
-  line-height: 1;
-  text-transform: uppercase;
-  background-color: transparent;
-
-  -webkit-transition: background-color 0.25s;
-  -moz-transition: background-color 0.25s;
-  transition: background-color 0.25s;
-}
-
-nav a:first-child {
-  border-radius: 2px 0 0 2px;
-}
-
-nav a:last-child {
-  border-radius: 0 2px 2px 0;
-}
-
-nav.headerProjectName .headerProjectName,
-nav.headerFirstPage .headerFirstPage,
-nav.headerTuCao .headerTuCao {
-  background-color: #e35885;
-}
-
-.headerLogIn {
-  color: #e75530;
-  font-size: 12px;
-  display: block;
-  height: 16px;
-  float: right;
-  margin-top: 0;
-  padding-right: 20px;
-  position: absolute;
-  right: 60px;
-  top: 0;
-}
-.headerLogOut {
-  color: #e75530;
-  font-size: 12px;
-  display: block;
-  height: 16px;
-  float: right;
-  margin-top: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-p {
-  font-size: 22px;
-  font-weight: bold;
-  color: #7d9098;
-}
-
-p b {
-  color: #ffffff;
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #c4d7e0;
-  border-radius: 2px;
-  text-transform: uppercase;
-  font-size: 18px;
 }
 </style>
