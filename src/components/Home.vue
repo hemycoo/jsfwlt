@@ -46,14 +46,14 @@ export default {
   width: 100%;
 }
 .el-header {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   color: #333;
   text-align: center;
   line-height: 60px;
 }
 .el-main {
-  background-color: #b3c0d1;
-  color: #333;
+  background-color: #79c3e0;
+  color: rgb(15, 17, 17);
   text-align: center;
   line-height: 60px;
 }
