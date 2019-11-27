@@ -11,9 +11,9 @@
         <el-menu-item index="/home">TC论坛</el-menu-item>
         <el-menu-item index="/firstPage">首页</el-menu-item>
         <el-menu-item index="/tuCao">吐槽</el-menu-item>
-        <el-menu-item index="3" disabled>功能2</el-menu-item>
+        <el-menu-item index="/topicdetail">话题详情</el-menu-item>
         <el-menu-item index="4">
-          <a href="https://www.ele.me" target="_blank">功能3</a>
+          <a href="http://localhost:8081/tucao/topic/detail/query" target="_blank">测试后台</a>
         </el-menu-item>
         <span>登录</span>
         <span>退出</span>

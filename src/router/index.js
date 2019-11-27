@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../components/Home'
 import Welcome from '../components/Welcome'
 import TuCao from '../components/tuCao/TuCao.vue'
+import TopicDetail from '../components/tuCao/TopicDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,10 @@ const routes = [
       {
         path: '/firstPage',
         component: Welcome
+      },
+      {
+        path: '/topicdetail',
+        component: TopicDetail
       }
     ]
   }
