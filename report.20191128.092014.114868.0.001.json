@@ -1,0 +1,476 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20191128.092014.114868.0.001.json",
+    "dumpEventTime": "2019-11-28T09:20:14Z",
+    "dumpEventTimeStamp": "1574904014292",
+    "processId": 114868,
+    "cwd": "i:\\vue_code\\jsfwlt",
+    "commandLine": [
+      "D:\\Program Files\\nodejs\\\\node.exe",
+      "D:\\Program Files\\nodejs\\\\node_modules\\npm\\bin\\npm-cli.js",
+      "info",
+      "axios",
+      "",
+      "--json",
+      "--registry=https://registry.npm.taobao.org"
+    ],
+    "nodejsVersion": "v12.13.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.13.0",
+      "v8": "7.7.299.13-node.12",
+      "uv": "1.32.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.13.0/node-v12.13.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.13.0/node-v12.13.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.13.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18362",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz",
+        "speed": 2594,
+        "user": 26185296,
+        "nice": 0,
+        "sys": 23906437,
+        "idle": 121017656,
+        "irq": 2947328
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz",
+        "speed": 2594,
+        "user": 23220468,
+        "nice": 0,
+        "sys": 19006734,
+        "idle": 128881828,
+        "irq": 294078
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz",
+        "speed": 2594,
+        "user": 28228828,
+        "nice": 0,
+        "sys": 20063921,
+        "idle": 122816312,
+        "irq": 191421
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz",
+        "speed": 2594,
+        "user": 27750296,
+        "nice": 0,
+        "sys": 19804406,
+        "idle": 123554375,
+        "irq": 154968
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "VMware Network Adapter VMnet8",
+        "internal": false,
+        "mac": "00:50:56:c0:00:08",
+        "address": "fe80::283b:6622:e3e2:d8ef",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 2
+      },
+      {
+        "name": "VMware Network Adapter VMnet8",
+        "internal": false,
+        "mac": "00:50:56:c0:00:08",
+        "address": "192.168.177.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "WLAN",
+        "internal": false,
+        "mac": "2c:d0:5a:43:41:59",
+        "address": "fe80::a006:e0db:2dd3:6c",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 9
+      },
+      {
+        "name": "WLAN",
+        "internal": false,
+        "mac": "2c:d0:5a:43:41:59",
+        "address": "192.168.43.237",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "HEMYCOO"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff7a3ce1389",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3ce57cc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3ce4778",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3dd332b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a45d6f4e",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a45bef91",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a448c85c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a4494961",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a4489fc3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a4488794",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a44a9a65",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a4216239",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a4a02c6d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a4a43abd",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a49827fc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a49827fc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a497bbac",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a49827fc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a49827fc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a49827fc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a49827fc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a497fdb1",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a497f99c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a44e4f43",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a44e48c6",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a45b5b3b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3df95ce",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3df9877",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3df874a",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3d9b715",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3df9263",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3cb666c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a4ab5d58",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff88b237bd4",
+      "symbol": "BaseThreadInitThunk+20"
+    },
+    {
+      "pc": "0x00007ff88d1aced1",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 3162112,
+    "totalCommittedMemory": 3162112,
+    "usedMemory": 2417336,
+    "availableMemory": 2195934152,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1048576,
+        "capacity": 1047488,
+        "used": 1047488,
+        "available": 0
+      },
+      "old_space": {
+        "memorySize": 1159168,
+        "committedMemory": 1159168,
+        "capacity": 945152,
+        "used": 941248,
+        "available": 3904
+      },
+      "code_space": {
+        "memorySize": 425984,
+        "committedMemory": 425984,
+        "capacity": 152064,
+        "used": 152064,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 266240,
+        "committedMemory": 266240,
+        "capacity": 244240,
+        "used": 244240,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 0.171,
+    "kernelCpuSeconds": 0.203,
+    "cpuConsumptionPercent": 18.7,
+    "maxRss": 36786176,
+    "pageFaults": {
+      "IORequired": 9161,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 0,
+      "writes": 98
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "": "I:=i:\\vue_code\\jsfwlt",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\hemycoo\\AppData\\Roaming",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132175915572219744",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "HEMYCOO",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\hemycoo",
+    "IntelliJ IDEA": "D:\\Program Files\\JetBrains\\IntelliJ IDEA 2019.1.3\\bin;",
+    "LOCALAPPDATA": "C:\\Users\\hemycoo\\AppData\\Local",
+    "LOGONSERVER": "\\\\HEMYCOO",
+    "MOZ_PLUGIN_PATH": "D:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\plugins\\",
+    "NODEJS_ORG_MIRROR": "https://npm.taobao.org/dist",
+    "NODE_EXE": "D:\\Program Files\\nodejs\\\\node.exe",
+    "NPM_CLI_JS": "D:\\Program Files\\nodejs\\\\node_modules\\npm\\bin\\npm-cli.js",
+    "NPM_PREFIX_NPM_CLI_JS": "C:\\Users\\hemycoo\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+    "NUMBER_OF_PROCESSORS": "4",
+    "OneDrive": "C:\\Users\\hemycoo\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "i:\\vue_code\\jsfwlt\\node_modules\\.bin;i:\\vue_code\\node_modules\\.bin;i:\\node_modules\\.bin;D:\\Program Files\\nodejs;D:\\Program Files (x86)\\Xshell\\;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;D:\\ProgramData\\Anaconda3;D:\\ProgramData\\Anaconda3\\Library\\mingw-w64\\bin;D:\\ProgramData\\Anaconda3\\Library\\usr\\bin;D:\\ProgramData\\Anaconda3\\Library\\bin;D:\\ProgramData\\Anaconda3\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;D:\\Program Files\\IDM Computer Solutions\\UltraEdit;D:\\Program Files\\Git\\cmd;D:\\Program Files\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\hemycoo\\AppData\\Local\\Microsoft\\WindowsApps;D:\\Program Files\\Bandizip\\;D:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.1.1\\bin;D:\\Program Files\\JetBrains\\IntelliJ IDEA 2019.1.3\\bin;D:\\Program Files\\Java\\jdk1.8.0_211\\bin;G:\\maven\\apache-maven-3.6.1\\bin;C:\\Users\\hemycoo\\AppData\\Roaming\\npm;D:\\Programs\\Microsoft VS Code\\bin",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "3a09",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PyCharm Community Edition": "D:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.1.1\\bin;",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\hemycoo\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\hemycoo\\AppData\\Local\\Temp",
+    "USERDOMAIN": "HEMYCOO",
+    "USERDOMAIN_ROAMINGPROFILE": "HEMYCOO",
+    "USERNAME": "hemycoo",
+    "USERPROFILE": "C:\\Users\\hemycoo",
+    "VUE_APP_CLI_UI_URL": "",
+    "VUE_CLI_API_MODE": "true",
+    "VUE_CLI_CONTEXT": "i:\\vue_code\\jsfwlt",
+    "VUE_CLI_IPC": "vue-cli-ccr77-dj",
+    "windir": "C:\\WINDOWS",
+    "_prog": "node"
+  },
+  "sharedObjects": [
+    "D:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll"
+  ]
+}
