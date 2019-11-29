@@ -1,56 +1,87 @@
 <template>
-  <el-tabs v-model="activeName" type="card" stretch="true" @tab-click="handleClick">
+  <el-tabs v-model="activeName" type="card" :stretch="true" @tab-click="handleClick">
     <el-tab-pane label="全部" name="first">全部</el-tab-pane>
     <el-tab-pane label="精华" name="second">精华</el-tab-pane>
     <el-tab-pane label="闲聊" name="third">闲聊</el-tab-pane>
     <el-tab-pane label="其他" name="fourth">其他</el-tab-pane>
-    <div class="info-list">
-      <div class="info_1">
-        <div class="info_title">第一条吐槽</div>
-        <div class="info_detail">
-          <span>青春是一个短暂的美梦, 当你醒来时, 它早已消失无踪</span>
-          <div class="img"><img src="@/images/logo.png"/></div>
+    <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
+    <div v-for="data in tucaoTopicList" :key=data.topicId class="infinite-list-item">
+      <el-card class="box-card">
+      <div>{{data.title}}</div>
+      <div>{{data.content}}</div>
+      <div class="rightullidiv">
+        <img src="@/images/1.png" class="rightulliimg" alt=""/>
         </div>
+        <div>评论数:{{data.commentNumber}}</div>
+        <div>点赞数量:{{data.likeNumber}}</div>
+        <div>点踩数量:{{data.dislikeNumber}}</div>
+      </el-card>
       </div>
-      <el-divider></el-divider>
-      <div class="info_2">
-        <div class="info_title">第二条吐槽</div>
-        <div class="info_detail">
-          <span>少量的邪恶足以抵消全部高贵的品质, 害得人声名狼藉</span>
-          <div class="img"><img src="@/images/1.png"/></div>
-        </div>
-      </div>
-      <el-divider></el-divider>
-       <div class="info_3">
-        <div class="info_title">第三条吐槽</div>
-        <div class="info_detail">
-          <span>这是一个论坛网站哦</span>
-          <div class="img"><img src="@/images/2.png"/></div>
-        </div>
-      </div>
-      <el-divider></el-divider>
-      <div class="info_4">
-        <div class="info_title">第四条吐槽</div>
-        <div class="info_detail">
-          <span>只要有树叶飞舞的地方就会有火在燃烧，那火光会照耀着村子，然后新的树叶会在此萌芽</span>
-          <div class="img"><img src="@/images/3.png"/></div>
-        </div>
-      </div>
-    </div>
+  </ul>
+      <!--<el-pagination
+        @size-change="handleSizeChange"
+                            @current-change="handleCurrentChange"
+                            :current-page="currentPage"
+                            :page-sizes="[5, 10, 20, 40]"
+                            :page-size="pagesize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="tucaoTopicList.length">
+      ></el-pagination>-->
   </el-tabs>
 </template>
+<style scoped>
+.infinite-list{
+  padding-top:0%;
+  padding-left:20%;
+  padding-right:20%;
+  padding-bottom:0%
+}
+.rightullidiv{
+   width: 100%;
+     height: 50%;
+     background: #ffffff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+ .rightulliimg {
+            max-width: 50%;
+            max-height: 200px;
+          }
+</style>
 <script>
 export default {
   data () {
     return {
-      activeName: 'first'
-      // imgSrc: require("../images/logo.png"),
+      currentPage: 1, // 初始页
+      pagesize: 10, //    每页的数据
+      tucaoTopicList: [],
+      activeName: '',
+      flowers: []
     }
   },
+  created () {
+    this.handleTucaoTopicList()
+  },
   methods: {
-    handleClick (tab, event) {
-      console.log(tab, event)
-    }
+  // 初始页currentPage、初始每页数据数pagesize和数据data
+    handleSizeChange: function (size) {
+      this.pagesize = size
+      console.log(this.pagesize) // 每页下拉显示数据
+    },
+    handleCurrentChange: function (currentPage) {
+      this.currentPage = currentPage
+      console.log(this.currentPage) // 点击第几页
+    },
+    handleTucaoTopicList () {
+      this.$http.get('http://localhost:8081/tucao/topic/queryAll').then(res => { // 这是从本地请求的数据接口，
+        this.tucaoTopicList = res.data.data
+      })
+    },
+    handleClick () {}
+  },
+  load () {
+    this.tucaoTopicList += 2
   }
 }
 </script>
