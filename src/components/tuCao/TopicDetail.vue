@@ -45,7 +45,7 @@ export default {
     },
     async getTopic () {
       this.$http.get('tucao/topic/query').then(Res => {
-        this.topic = Res.data
+        this.topic = Res.data.data
         console.log(this.topic)
       })
     },
