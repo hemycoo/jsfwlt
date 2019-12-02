@@ -29,7 +29,8 @@ export default {
       topicdetailList: [],
       topic: [],
       count: 0,
-      i: 0
+      i: 0,
+      topicId: 'topicId'
     }
   },
   created () {
@@ -38,7 +39,7 @@ export default {
   },
   methods: {
     async getTopicDetailList () {
-      this.$http.get('tucao/topic/detail/query').then(Response => {
+      this.$http.get('tucao/topic/detail/query/' + this.topicId).then(Response => {
         this.topicdetailList = Response.data.topicDetaildata
         console.log(Response.data.topicDetaildata)
       })
