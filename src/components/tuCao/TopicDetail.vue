@@ -31,10 +31,11 @@ export default {
       topic: [],
       count: 0,
       i: 0,
-      topicId: 'topicId'
+      topicId: ''
     }
   },
   created () {
+    this.topicId = this.$route.params.topicId
     this.getTopicDetailList()
     this.getTopic()
   },

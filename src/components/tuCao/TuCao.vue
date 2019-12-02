@@ -7,7 +7,7 @@
     <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
     <div v-for="data in tucaoTopicList" :key=data.topicId class="infinite-list-item">
       <el-card class="box-card">
-      <div>{{data.title}}</div>
+      <router-link :to="{name:'TopicDetail', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
       <div>{{data.content}}</div>
       <div class="rightullidiv">
         <img src="@/images/1.png" class="rightulliimg" alt=""/>

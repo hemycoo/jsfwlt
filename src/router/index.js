@@ -28,6 +28,7 @@ const routes = [
       },
       {
         path: '/topicdetail',
+        name: 'TopicDetail',
         component: TopicDetail
       }
     ]
