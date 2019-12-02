@@ -11,7 +11,8 @@
     <ul class="infinite-list" v-infinite-scroll="load">
       <div v-for="data in topicdetailList" :key="data" class="infinite-list-item">
         <p class="yonghu"><span>用户头像</span><span>{{data.userNickname}}</span></p>
-        {{ data.commentId }}
+        {{ data.content }}
+        <p class="MfTime">编辑于&nbsp;{{data.modificationTime}}</p>
         <p class="like">
           <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
           <span>踩&nbsp;{{data.dislikeNumber}}&nbsp;&nbsp;</span>
@@ -78,6 +79,9 @@ export default {
 .yonghu {
   text-align: left;
   text-indent: 5px;
+}
+.MfTime {
+  text-align: left;
 }
 .like {
   text-align: left;
