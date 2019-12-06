@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" type="card" :stretch="true" @tab-click="handleClick">
+  <el-tabs v-model="activeName" type="card" :stretch="true">
     <el-tab-pane label="全部" name="first">全部</el-tab-pane>
     <el-tab-pane label="精华" name="second">精华</el-tab-pane>
     <el-tab-pane label="闲聊" name="third">闲聊</el-tab-pane>
@@ -10,11 +10,13 @@
       <router-link :to="{name:'TopicDetail', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
       <div>{{data.content}}</div>
       <div class="rightullidiv">
-        <img src="@/images/1.png" class="rightulliimg" alt=""/>
+        <img :src="data.imageUrl" class="rightulliimg" alt=""/>
         </div>
-        <div>评论数:{{data.commentNumber}}</div>
-        <div>点赞数量:{{data.likeNumber}}</div>
-        <div>点踩数量:{{data.dislikeNumber}}</div>
+        <p class="like">
+          <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
+          <span>踩&nbsp;{{data.dislikeNumber}}&nbsp;&nbsp;</span>
+          <span>评论&nbsp;{{data.commentNumber}}</span>
+        </p>
       </el-card>
       </div>
   </ul>
@@ -48,6 +50,10 @@
             max-width: 50%;
             max-height: 200px;
           }
+.like {
+  text-align: right;
+  text-indent: 5px;
+}
 </style>
 <script>
 export default {
@@ -78,10 +84,9 @@ export default {
         this.tucaoTopicList = res.data.data
       })
     },
-    handleClick () {}
-  },
-  load () {
-    this.tucaoTopicList += 2
+    load () {
+      this.tucaoTopicList += 2
+    }
   }
 }
 </script>
