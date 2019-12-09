@@ -20,10 +20,12 @@ const routes = [
     children: [
       {
         path: '/tuCao',
+        name: 'TuCao',
         component: TuCao
       },
       {
         path: '/firstPage',
+        name: 'Welcome',
         component: Welcome
       },
       {

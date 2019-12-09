@@ -9,9 +9,12 @@
       <el-card class="box-card">
       <router-link :to="{name:'TopicDetail', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
       <div>{{data.content}}</div>
-      <div class="rightullidiv">
-        <img :src="data.imageUrl" class="rightulliimg" alt=""/>
-        </div>
+      <div class="demo-image">
+    <el-image
+      style="width: 200px; height: 200px"
+      :src="data.imageUrl"
+      :fit="cover"></el-image>
+</div>
         <p class="like">
           <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
           <span>踩&nbsp;{{data.dislikeNumber}}&nbsp;&nbsp;</span>
@@ -38,18 +41,6 @@
   padding-right:20%;
   padding-bottom:0%
 }
-.rightullidiv{
-   width: 100%;
-     height: 50%;
-     background: #ffffff;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-}
- .rightulliimg {
-            max-width: 50%;
-            max-height: 200px;
-          }
 .like {
   text-align: right;
   text-indent: 5px;

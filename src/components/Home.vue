@@ -15,19 +15,25 @@
         <el-menu-item index="4">
           <a href="http://localhost:8081/tucao/topic/detail/query" target="_blank">测试后台</a>
         </el-menu-item>
-        <span>登录</span>
-        <span>退出</span>
+        <div class = "buttonStyle">
+        <el-button>登录</el-button>
+        <el-button>注册</el-button>
+        </div>
       </el-menu>
     </el-header>
     <el-main>
       <router-view></router-view>
     </el-main>
-    <el-footer>Footer</el-footer>
+    <v-footer></v-footer>
   </el-container>
 </template>
 
 <script>
+import footer from '@/components/footer.vue'
 export default {
+  components: {
+    'v-footer': footer
+  },
   data () {
     return {
       activeIndex: '1'
@@ -65,5 +71,8 @@ export default {
   color: #111;
   text-align: center;
   line-height: 60px;
+}
+.buttonStyle{
+   text-align: right;
 }
 </style>
