@@ -22,7 +22,12 @@
         <el-button type="primary" @click="handleClickForRegister">注册</el-button>
         <v-register v-on:getUserNickname="get" v-if="modelShowForRegister" :visible.sync="modelShowForRegister"></v-register>
         </ul>
+        </div>
+        <div class = "showOfButton">
+        <ul v-if="showButton">
+        <el-image class = "head_img" :src="headPhotoUrl"></el-image>
         <span>{{userNickname}}</span>
+        </ul>
         </div>
       </el-menu>
     </el-header>
@@ -49,7 +54,8 @@ export default {
       modelShowForLogin: false,
       modelShowForRegister: false,
       userNickname: '',
-      showButton: false
+      showButton: false,
+      headPhotoUrl: 'https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=62d46c39067b020818c437b303b099b6/d4628535e5dde7119c3d076aabefce1b9c1661ba.jpg'
     }
   },
   methods: {
@@ -96,6 +102,15 @@ export default {
   line-height: 60px;
 }
 .singUpAndRegister{
+   text-align: right;
+}
+.head_img{
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+
+}
+.showOfButton{
    text-align: right;
 }
 </style>
