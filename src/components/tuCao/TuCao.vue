@@ -4,7 +4,7 @@
     <el-tab-pane label="精华" name="second">精华</el-tab-pane>
     <el-tab-pane label="闲聊" name="third">闲聊</el-tab-pane>
     <el-tab-pane label="其他" name="fourth">其他</el-tab-pane>
-    <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
+    <ul class="infinite-list" infinite-scroll="load" style="overflow:auto">
     <div v-for="data in tucaoTopicList" :key=data.topicId class="infinite-list-item">
       <el-card class="box-card">
       <router-link :to="{name:'TopicDetail', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
@@ -12,8 +12,7 @@
       <div class="demo-image">
     <el-image
       style="width: 200px; height: 200px"
-      :src="data.imageUrl"
-      :fit="cover"></el-image>
+      :src="data.imageUrl"></el-image>
 </div>
         <p class="like">
           <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
@@ -23,15 +22,6 @@
       </el-card>
       </div>
   </ul>
-      <!--<el-pagination
-        @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page="currentPage"
-                            :page-sizes="[5, 10, 20, 40]"
-                            :page-size="pagesize"
-                            layout="total, sizes, prev, pager, next, jumper"
-                            :total="tucaoTopicList.length">
-      ></el-pagination>-->
   </el-tabs>
 </template>
 <style scoped>

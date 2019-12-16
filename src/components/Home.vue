@@ -15,9 +15,14 @@
         <el-menu-item index="4">
           <a href="http://localhost:8081/tucao/topic/detail/query" target="_blank">测试后台</a>
         </el-menu-item>
-        <div class = "buttonStyle">
-        <el-button>登录</el-button>
-        <el-button>注册</el-button>
+        <div class = "singUpAndRegister">
+        <ul v-if="!showButton">
+        <el-button type="primary" @click="handleClickForLogin">登录</el-button>
+        <v-login v-if="modelShowForLogin" :visible.sync="modelShowForLogin"></v-login>
+        <el-button type="primary" @click="handleClickForRegister">注册</el-button>
+        <v-register v-on:getUserNickname="get" v-if="modelShowForRegister" :visible.sync="modelShowForRegister"></v-register>
+        </ul>
+        <span>{{userNickname}}</span>
         </div>
       </el-menu>
     </el-header>
@@ -30,18 +35,36 @@
 
 <script>
 import footer from '@/components/footer.vue'
+import login from '@/components/login.vue'
+import register from '@/components/register.vue'
 export default {
   components: {
-    'v-footer': footer
+    'v-footer': footer,
+    'v-login': login,
+    'v-register': register
   },
   data () {
     return {
-      activeIndex: '1'
+      activeIndex: '1',
+      modelShowForLogin: false,
+      modelShowForRegister: false,
+      userNickname: '',
+      showButton: false
     }
   },
   methods: {
     handleSelect (key, keyPath) {
       console.log(key, 'path' + keyPath)
+    },
+    handleClickForLogin () {
+      this.modelShowForLogin = true
+    },
+    handleClickForRegister () {
+      this.modelShowForRegister = true
+    },
+    get (msg) {
+      this.userNickname = msg
+      this.showButton = true
     }
   }
 }
@@ -72,7 +95,7 @@ export default {
   text-align: center;
   line-height: 60px;
 }
-.buttonStyle{
+.singUpAndRegister{
    text-align: right;
 }
 </style>
