@@ -11,7 +11,7 @@
       </el-form-item>
     </el-form>
     <div slot="footer" class="buttons-wrap">
-      <el-button type="primary">确定</el-button>
+      <el-button type="primary" @click="login">确定</el-button>
     </div>
   </el-dialog>
 </template>
@@ -45,6 +45,25 @@ export default {
     cancelModal () {
       // 关闭弹窗，触发父组件修改visible值
       this.$emit('update:visible', false)
+    },
+    login () {
+      this.$http.get('http://localhost:8081/login', { params: { userNickname: this.orderForm.userNickname, userPassword: this.orderForm.userPassword } }).then(res => {
+        if (res.data.status === '200') {
+          // 如果返回200，说明用户登录成功，关闭弹出窗口
+          this.$emit('update:visible', false)
+          this.$emit('getLoginUserNickname', res.data.userNickname)
+        } else {
+          this.$alert(res.data.message, '错误提示', {
+            confirmButtonText: '确定',
+            callback: action => {
+              this.$message({
+                type: 'info',
+                message: `action: ${action}`
+              })
+            }
+          })
+        }
+      })
     }
   }
 }

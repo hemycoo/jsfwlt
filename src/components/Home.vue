@@ -18,9 +18,9 @@
         <div class = "singUpAndRegister">
         <ul v-if="!showButton">
         <el-button type="primary" @click="handleClickForLogin">登录</el-button>
-        <v-login v-if="modelShowForLogin" :visible.sync="modelShowForLogin"></v-login>
+        <v-login v-on:getLoginUserNickname="getLoginUserNickname" v-if="modelShowForLogin" :visible.sync="modelShowForLogin"></v-login>
         <el-button type="primary" @click="handleClickForRegister">注册</el-button>
-        <v-register v-on:getUserNickname="get" v-if="modelShowForRegister" :visible.sync="modelShowForRegister"></v-register>
+        <v-register v-on:getRegisterUserNickname="getRegisterUserNickname" v-if="modelShowForRegister" :visible.sync="modelShowForRegister"></v-register>
         </ul>
         </div>
         <div class = "showOfButton">
@@ -68,7 +68,11 @@ export default {
     handleClickForRegister () {
       this.modelShowForRegister = true
     },
-    get (msg) {
+    getRegisterUserNickname (msg) {
+      this.userNickname = msg
+      this.showButton = true
+    },
+    getLoginUserNickname (msg) {
       this.userNickname = msg
       this.showButton = true
     }

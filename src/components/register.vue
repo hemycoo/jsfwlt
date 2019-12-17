@@ -88,7 +88,7 @@ export default {
         if (res.data.status === '200') {
           // 如果返回200，说明后端注册用户成功，关闭弹出窗口
           this.$emit('update:visible', false)
-          this.$emit('getUserNickname', res.data.userNickname)
+          this.$emit('getRegisterUserNickname', res.data.userNickname)
         } else {
           this.$alert('该用户名已存在', '错误提示', {
             confirmButtonText: '确定',
