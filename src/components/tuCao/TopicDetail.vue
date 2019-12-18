@@ -8,7 +8,7 @@
       {{topic.content}}
     </p>
   </div>
-    <ul class="infinite-list" v-infinite-scroll="load">
+    <ul class="infinite-list" infinite-scroll="load">
       <div v-for="data in topicdetailList" :key="data" class="infinite-list-item">
         <p class="yonghu"><span>用户头像</span><span>{{data.userNickname}}</span></p>
         {{ data.content }}
@@ -16,22 +16,34 @@
         <p class="like">
           <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
           <span>踩&nbsp;{{data.dislikeNumber}}&nbsp;&nbsp;</span>
-          <span>评论&nbsp;{{data.commentId}}</span>
+          <el-button type="text" @click="showCommentClick(data.topicChildrenId)">评论</el-button>
         </p>
+          <div class="comment-list" v-show="commentShowBoolean">
+                <h3>用户评论</h3>
+                  <div class="comment-item">
+                      <ArticleComment :comments="comment"></ArticleComment>
+                  </div>
+          </div>
       </div>
     </ul>
 </div>
 </template>
 
 <script>
+import ArticleComment from '../tuCao/TopicComment.vue'
 export default {
+  components: {
+    ArticleComment
+  },
   data () {
     return {
       topicdetailList: [],
       topic: [],
       count: 0,
       i: 0,
-      topicId: ''
+      topicId: '',
+      comment: [],
+      commentShowBoolean: false
     }
   },
   created () {
@@ -54,6 +66,14 @@ export default {
     },
     load () {
       this.topicdetailList += 2
+    },
+    showCommentClick: function (topicChildrenId) {
+      this.commentShowBoolean = !this.commentShowBoolean
+      console.log(topicChildrenId)
+      this.$http.get('tucao/topic/query/' + this.topicId).then(Res => {
+        this.topic = Res.data.data
+        console.log('comment  ' + this.topic)
+      })
     }
   }
 }
