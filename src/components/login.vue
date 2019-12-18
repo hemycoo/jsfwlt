@@ -7,7 +7,7 @@
         <el-input v-model="orderForm.userNickname" type="text" placeholder="用户名"></el-input>
       </el-form-item>
       <el-form-item label="密码：" prop="userPassword">
-        <el-input v-model="orderForm.userPassword" type="text" placeholder="密码"></el-input>
+        <el-input v-model="orderForm.userPassword" type="text" placeholder="密码" show-password></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="buttons-wrap">

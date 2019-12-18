@@ -17,7 +17,8 @@
         <p class="like">
           <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
           <span>踩&nbsp;{{data.dislikeNumber}}&nbsp;&nbsp;</span>
-          <span>评论&nbsp;{{data.commentNumber}}</span>
+          <span>评论&nbsp;{{data.commentNumber}}&nbsp;&nbsp;</span>
+          <span>最新更新时间&nbsp;{{data.showTime}}</span>
         </p>
       </el-card>
       </div>

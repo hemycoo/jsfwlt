@@ -81,7 +81,6 @@ export default {
         method: 'post',
         url: 'http://localhost:8081/register',
         headers: { 'Content-Type': 'multipart/form-data' },
-        // contentType: 'application/json;charsetset=UTF-8',
         withCredentials: true,
         data: formData
       }).then((res) => {
