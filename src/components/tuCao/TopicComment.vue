@@ -10,7 +10,7 @@
                 spellcheck="false"
                 placeholder="输入评论..."
                 class="reply-input"
-                @focus="showReplyBtn" 
+                @focus="showReplyBtn"
                 @input="onDivInput($event)"
                 >
                 </div>

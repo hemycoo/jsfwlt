@@ -1,25 +1,25 @@
 <template>
   <el-tabs v-model="activeName" type="card" :stretch="true">
-    <el-tab-pane label="全部" name="first">全部</el-tab-pane>
-    <el-tab-pane label="精华" name="second">精华</el-tab-pane>
-    <el-tab-pane label="闲聊" name="third">闲聊</el-tab-pane>
-    <el-tab-pane label="其他" name="fourth">其他</el-tab-pane>
     <ul class="infinite-list" infinite-scroll="load" style="overflow:auto">
     <div v-for="data in tucaoTopicList" :key=data.topicId class="infinite-list-item">
       <el-card class="box-card">
       <router-link :to="{name:'TopicDetail', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
-      <div>{{data.content}}</div>
-      <div class="demo-image">
-    <el-image
-      style="width: 200px; height: 200px"
-      :src="data.imageUrl"></el-image>
-</div>
-        <p class="like">
+      <div class = "contentAndImage" style="width: 1200px; height: 150px;">
+        <div style="width: 400px; height: 150px;" class = "content">{{data.content}}</div>
+        <div class="demo-image" style="width: 200px; height: 150px;">
+        <el-image :src="data.imageUrl"></el-image>
+        </div>
+      </div>
+      <div>
+        <div class="like">
           <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
           <span>踩&nbsp;{{data.dislikeNumber}}&nbsp;&nbsp;</span>
           <span>评论&nbsp;{{data.commentNumber}}&nbsp;&nbsp;</span>
+          </div>
+          <div class="showTime">
           <span>最新更新时间&nbsp;{{data.showTime}}</span>
-        </p>
+          </div>
+          </div>
       </el-card>
       </div>
   </ul>
@@ -30,11 +30,30 @@
   padding-top:0%;
   padding-left:20%;
   padding-right:20%;
-  padding-bottom:0%
+  padding-bottom:0%;
+}
+.contentAndImage{
+  position:relative
+}
+.content{
+  text-align:left;
+  font-size:5px;
+  line-height:2;
+  position:absolute;
+  left:0%
+}
+.demo-image{
+  position:absolute;
+  left:45%
 }
 .like {
-  text-align: right;
   text-indent: 5px;
+  float:left
+}
+.showTime{
+  float:right;
+  width:auto;
+  height:auto;
 }
 </style>
 <script>
