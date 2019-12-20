@@ -19,9 +19,9 @@
           <el-button type="text" @click="showCommentClick(data.topicChildrenId)">评论</el-button>
         </p>
           <div class="comment-list" v-show="commentShowBoolean">
-                <h3>用户评论</h3>
+                <h5 align = "left">用户评论</h5>
                   <div class="comment-item">
-                      <ArticleComment :comments="comment"></ArticleComment>
+                      <TopicComment :comments="comment"></TopicComment>
                   </div>
           </div>
       </div>
@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import ArticleComment from '../tuCao/TopicComment.vue'
+import TopicComment from '../tuCao/TopicCommentAndReply.vue'
 export default {
   components: {
-    ArticleComment
+    TopicComment
   },
   data () {
     return {
@@ -43,7 +43,8 @@ export default {
       i: 0,
       topicId: '',
       comment: [],
-      commentShowBoolean: false
+      commentShowBoolean: false,
+      detailExist: ''
     }
   },
   created () {
@@ -70,9 +71,9 @@ export default {
     showCommentClick: function (topicChildrenId) {
       this.commentShowBoolean = !this.commentShowBoolean
       console.log(topicChildrenId)
-      this.$http.get('tucao/topic/query/' + this.topicId).then(Res => {
-        this.topic = Res.data.data
-        console.log('comment  ' + this.topic)
+      this.$http.get('tucao/topic/detail/querycomment/' + topicChildrenId).then(Res1 => {
+        this.comment = Res1.data.commentReplyData
+        // console.log('comment  ' + this.comment[0].commentId)
       })
     }
   }

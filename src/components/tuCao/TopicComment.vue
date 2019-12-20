@@ -22,33 +22,33 @@
         <div v-for="(item,i) in comments" :key="i" class="author-title reply-father">
             <el-avatar class="header-img" :size="40" :src="item.headImg"></el-avatar>
             <div class="author-info">
-                <span class="author-name">{{item.name}}</span>
-                <span class="author-time">{{item.time}}</span>
+                <span class="author-name">{{item.userNickname}}</span>
+                <span class="author-time">{{item.commentTime}}</span>
             </div>
             <div class="icon-btn">
-                <span @click="showReplyInput(i,item.name,item.id)"><i class="iconfont el-icon-s-comment"></i>{{item.commentNum}}</span>
-                <i class="iconfont el-icon-caret-top"></i>{{item.like}}
+                <span @click="showReplyInput(i,item.userNickname,item.commentId)"><i class="iconfont el-icon-s-comment"></i>{{item.commentNum}}</span>
+                <i class="iconfont el-icon-caret-top"></i>{{item.likeNumber}}
             </div>
             <div class="talk-box">
                 <p>
-                    <span class="reply">{{item.comment}}</span>
+                    <span class="reply">{{item.commentContent}}</span>
                 </p>
             </div>
             <div class="reply-box">
-                <div v-for="(reply,j) in item.reply" :key="j" class="author-title">
+                <div v-for="(reply,j) in item.replyList" :key="j" class="author-title">
                     <el-avatar class="header-img" :size="40" :src="reply.fromHeadImg"></el-avatar>
                     <div class="author-info">
-                        <span class="author-name">{{reply.from}}</span>
-                        <span class="author-time">{{reply.time}}</span>
+                        <span class="author-name">{{reply.userNickname}}</span>
+                        <span class="author-time">{{reply.replyTime}}</span>
                     </div>
                     <div class="icon-btn">
                         <span @click="showReplyInput(i,reply.from,reply.id)"><i class="iconfont el-icon-s-comment"></i>{{reply.commentNum}}</span>
-                        <i class="iconfont el-icon-caret-top"></i>{{reply.like}}
+                        <i class="iconfont el-icon-caret-top"></i>{{reply.likeNumber}}
                     </div>
                     <div class="talk-box">
                         <p>
-                            <span>回复 {{reply.to}}:</span>
-                            <span class="reply">{{reply.comment}}</span>
+                            <span>回复 {{reply.replyToName}}:</span>
+                            <span class="reply">{{reply.replyContent}}</span>
                         </p>
                     </div>
                     <div class="reply-box">
@@ -96,6 +96,7 @@ const clickoutside = {
   }
 }
 export default {
+  props: ['comments'],
   name: 'ArticleComment',
   data () {
     return {
@@ -107,84 +108,90 @@ export default {
       myId: 19870621,
       to: '',
       toId: -1,
-      comments: [
-        {
-          name: 'Lana Del Rey',
-          id: 19870621,
-          headImg: 'https://ae01.alicdn.com/kf/Hd60a3f7c06fd47ae85624badd32ce54dv.jpg',
-          comment: '我发布一张新专辑Norman Fucking Rockwell,大家快来听啊',
-          time: '2019年9月16日 18:43',
-          commentNum: 2,
-          like: 15,
-          inputShow: false,
-          reply: [
-            {
-              from: 'Taylor Swift',
-              fromId: 19891221,
-              fromHeadImg: 'https://ae01.alicdn.com/kf/H94c78935ffa64e7e977544d19ecebf06L.jpg',
-              to: 'Lana Del Rey',
-              toId: 19870621,
-              comment: '我很喜欢你的新专辑！！',
-              time: '2019年9月16日 18:43',
-              commentNum: 1,
-              like: 15,
-              inputShow: false
-            },
-            {
-              from: 'Ariana Grande',
-              fromId: 1123,
-              fromHeadImg: 'https://ae01.alicdn.com/kf/Hf6c0b4a7428b4edf866a9fbab75568e6U.jpg',
-              to: 'Lana Del Rey',
-              toId: 19870621,
-              comment: '别忘记宣传我们的合作单曲啊',
-              time: '2019年9月16日 18:43',
-              commentNum: 0,
-              like: 5,
-              inputShow: false
-            }
-          ]
-        },
-        {
-          name: 'Taylor Swift',
-          id: 19891221,
-          headImg: 'https://ae01.alicdn.com/kf/H94c78935ffa64e7e977544d19ecebf06L.jpg',
-          comment: '我发行了我的新专辑Lover',
-          time: '2019年9月16日 18:43',
-          commentNum: 1,
-          like: 5,
-          inputShow: false,
-          reply: [
-            {
-              from: 'Lana Del Rey',
-              fromId: 19870621,
-              fromHeadImg: 'https://ae01.alicdn.com/kf/Hd60a3f7c06fd47ae85624badd32ce54dv.jpg',
-              to: 'Taylor Swift',
-              toId: 19891221,
-              comment: '新专辑和speak now 一样棒！',
-              time: '2019年9月16日 18:43',
-              commentNum: 25,
-              like: 5,
-              inputShow: false
+      comments: []
+      // comments: [
+      //   {
+      //     name: 'Lana Del Rey',
+      //     id: 19870621,
+      //     headImg: 'https://ae01.alicdn.com/kf/Hd60a3f7c06fd47ae85624badd32ce54dv.jpg',
+      //     comment: '我发布一张新专辑Norman Fucking Rockwell,大家快来听啊',
+      //     time: '2019年9月16日 18:43',
+      //     commentNum: 2,
+      //     like: 15,
+      //     inputShow: false,
+      //     reply: [
+      //       {
+      //         from: 'Taylor Swift',
+      //         fromId: 19891221,
+      //         fromHeadImg: 'https://ae01.alicdn.com/kf/H94c78935ffa64e7e977544d19ecebf06L.jpg',
+      //         to: 'Lana Del Rey',
+      //         toId: 19870621,
+      //         comment: '我很喜欢你的新专辑！！',
+      //         time: '2019年9月16日 18:43',
+      //         commentNum: 1,
+      //         like: 15,
+      //         inputShow: false
+      //       },
+      //       {
+      //         from: 'Ariana Grande',
+      //         fromId: 1123,
+      //         fromHeadImg: 'https://ae01.alicdn.com/kf/Hf6c0b4a7428b4edf866a9fbab75568e6U.jpg',
+      //         to: 'Lana Del Rey',
+      //         toId: 19870621,
+      //         comment: '别忘记宣传我们的合作单曲啊',
+      //         time: '2019年9月16日 18:43',
+      //         commentNum: 0,
+      //         like: 5,
+      //         inputShow: false
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     name: 'Taylor Swift',
+      //     id: 19891221,
+      //     headImg: 'https://ae01.alicdn.com/kf/H94c78935ffa64e7e977544d19ecebf06L.jpg',
+      //     comment: '我发行了我的新专辑Lover',
+      //     time: '2019年9月16日 18:43',
+      //     commentNum: 1,
+      //     like: 5,
+      //     inputShow: false,
+      //     reply: [
+      //       {
+      //         from: 'Lana Del Rey',
+      //         fromId: 19870621,
+      //         fromHeadImg: 'https://ae01.alicdn.com/kf/Hd60a3f7c06fd47ae85624badd32ce54dv.jpg',
+      //         to: 'Taylor Swift',
+      //         toId: 19891221,
+      //         comment: '新专辑和speak now 一样棒！',
+      //         time: '2019年9月16日 18:43',
+      //         commentNum: 25,
+      //         like: 5,
+      //         inputShow: false
 
-            }
-          ]
-        },
-        {
-          name: 'Norman Fucking Rockwell',
-          id: 20190830,
-          headImg: 'https://ae01.alicdn.com/kf/Hdd856ae4c81545d2b51fa0c209f7aa28Z.jpg',
-          comment: 'Plz buy Norman Fucking Rockwell on everywhere',
-          time: '2019年9月16日 18:43',
-          commentNum: 0,
-          like: 5,
-          inputShow: false,
-          reply: []
-        }
-      ]
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     name: 'Norman Fucking Rockwell',
+      //     id: 20190830,
+      //     headImg: 'https://ae01.alicdn.com/kf/Hdd856ae4c81545d2b51fa0c209f7aa28Z.jpg',
+      //     comment: 'Plz buy Norman Fucking Rockwell on everywhere',
+      //     time: '2019年9月16日 18:43',
+      //     commentNum: 0,
+      //     like: 5,
+      //     inputShow: false,
+      //     reply: []
+      //   }
+      // ]
     }
   },
   directives: { clickoutside },
   methods: {
+    created () {
+      console.log('comment')
+      this.comments = this.comment,
+      alert(this.comment[0].commentId)
+    },
     inputFocus () {
       var replyInput = document.getElementById('replyInput')
       replyInput.style.padding = '8px 8px'
