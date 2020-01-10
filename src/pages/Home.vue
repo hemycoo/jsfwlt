@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import footer from '@/pages/footer.vue'
-import login from '@/pages/login.vue'
-import register from '@/pages/register.vue'
+import footer from '@/pages/Footer.vue'
+import login from '@/pages/user/Login.vue'
+import register from '@/pages/user/Register.vue'
 export default {
   components: {
     'v-footer': footer,
