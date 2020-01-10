@@ -5,18 +5,22 @@
       {{topic.title}}
     </p>
     <p style="padding-right:85%">
-      {{topic.content}}
+      {{topic.contentAbstract}}
     </p>
+    <p class="answerInputDiv">
+      <answer-input></answer-input>
+    </p>
+    <p>测试</p>
   </div>
     <ul class="infinite-list" infinite-scroll="load">
       <div v-for="data in topicdetailList" :key="data" class="infinite-list-item">
         <p class="yonghu"><span>用户头像</span><span>{{data.userNickname}}</span></p>
         {{ data.content }}
-        <p class="MfTime">编辑于&nbsp;{{data.modificationTime}}</p>
+        <p class="MfTime">编辑于&nbsp;{{data.modifyTime}}</p>
         <p class="like">
           <span>赞&nbsp;{{data.likeNumber}}&nbsp;&nbsp;</span>
           <span>踩&nbsp;{{data.dislikeNumber}}&nbsp;&nbsp;</span>
-          <el-button type="text" @click="showCommentClick(data.topicChildrenId)">评论</el-button>
+          <el-button type="text" @click="showCommentClick(data.topicAnswerId)">评论</el-button>
         </p>
           <div class="comment-list" v-show="commentShowBoolean">
                 <h5 align = "left">用户评论</h5>
@@ -31,9 +35,11 @@
 
 <script>
 import TopicComment from '../roast/TopicCommentAndReply.vue'
+import AnswerInput from '../roast/AnswerInput.vue'
 export default {
   components: {
-    TopicComment
+    TopicComment,
+    AnswerInput
   },
   data () {
     return {
@@ -55,8 +61,8 @@ export default {
   methods: {
     async getTopicDetailList () {
       this.$http.get('roast/topic/answer/query/' + this.topicId).then(Response => {
-        this.topicdetailList = Response.data.topicDetaildata
-        console.log(Response.data.topicDetaildata)
+        this.topicdetailList = Response.data.topicAnswerData
+        console.log(Response.data.topicAnswerData)
       })
     },
     async getTopic () {
@@ -68,10 +74,10 @@ export default {
     load () {
       this.topicdetailList += 2
     },
-    showCommentClick: function (topicChildrenId) {
+    showCommentClick: function (topicAnswerId) {
       this.commentShowBoolean = !this.commentShowBoolean
-      console.log(topicChildrenId)
-      this.$http.get('roast/topic/answer/querycomment/' + topicChildrenId).then(Res1 => {
+      console.log(topicAnswerId)
+      this.$http.get('roast/topic/answer/querycomment/' + topicAnswerId).then(Res1 => {
         this.comment = Res1.data.commentReplyData
         // console.log('comment  ' + this.comment[0].commentId)
       })
