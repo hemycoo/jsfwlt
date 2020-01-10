@@ -10,8 +10,8 @@
       >
         <el-menu-item index="/home">TC论坛</el-menu-item>
         <el-menu-item index="/firstPage">首页</el-menu-item>
-        <el-menu-item index="/tuCao">吐槽</el-menu-item>
-        <el-menu-item index="/topicdetail">话题详情</el-menu-item>
+        <el-menu-item index="/roast">吐槽</el-menu-item>
+        <el-menu-item index="/topicAnswer">话题详情</el-menu-item>
         <el-menu-item index="4">
           <a href="http://localhost:8081/tucao/topic/detail/query" target="_blank">测试后台</a>
         </el-menu-item>
@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import footer from '@/components/footer.vue'
-import login from '@/components/login.vue'
-import register from '@/components/register.vue'
+import footer from '@/pages/footer.vue'
+import login from '@/pages/login.vue'
+import register from '@/pages/register.vue'
 export default {
   components: {
     'v-footer': footer,

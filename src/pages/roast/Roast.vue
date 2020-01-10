@@ -3,7 +3,7 @@
     <ul class="infinite-list" infinite-scroll="load" style="overflow:auto">
     <div v-for="data in tucaoTopicList" :key=data.topicId class="infinite-list-item">
       <el-card class="box-card">
-      <router-link :to="{name:'TopicDetail', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
+      <router-link :to="{name:'TopicAnswer', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
       <div class = "contentAndImage" style="width: 1200px; height: 150px;">
         <div style="width: 400px; height: 150px;" class = "content">{{data.content}}</div>
         <div class="demo-image" style="width: 200px; height: 150px;">
@@ -81,7 +81,7 @@ export default {
       console.log(this.currentPage) // 点击第几页
     },
     handleTucaoTopicList () {
-      this.$http.get('http://localhost:8081/tucao/topic/queryAll').then(res => { // 这是从本地请求的数据接口，
+      this.$http.get('http://localhost:8081/roast/topic/queryAll').then(res => { // 这是从本地请求的数据接口，
         this.tucaoTopicList = res.data.data
       })
     },

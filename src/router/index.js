@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/Home'
-import Welcome from '../components/Welcome'
-import TuCao from '../components/tuCao/TuCao.vue'
-import TopicDetail from '../components/tuCao/TopicDetail.vue'
+import Home from '../pages/Home'
+import Welcome from '../pages/Welcome'
+import Roast from '../pages/roast/Roast.vue'
+import TopicAnswer from '../pages/roast/TopicAnswer.vue'
 
 Vue.use(VueRouter)
 
@@ -19,9 +19,9 @@ const routes = [
     redirect: '/firstPage',
     children: [
       {
-        path: '/tuCao',
-        name: 'TuCao',
-        component: TuCao
+        path: '/roast',
+        name: 'Roast',
+        component: Roast
       },
       {
         path: '/firstPage',
@@ -29,9 +29,9 @@ const routes = [
         component: Welcome
       },
       {
-        path: '/topicdetail',
-        name: 'TopicDetail',
-        component: TopicDetail
+        path: '/topicAnswer',
+        name: 'TopicAnswer',
+        component: TopicAnswer
       }
     ]
   }

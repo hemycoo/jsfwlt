@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import TopicComment from '../tuCao/TopicCommentAndReply.vue'
+import TopicComment from '../roast/TopicCommentAndReply.vue'
 export default {
   components: {
     TopicComment
@@ -54,13 +54,13 @@ export default {
   },
   methods: {
     async getTopicDetailList () {
-      this.$http.get('tucao/topic/detail/query/' + this.topicId).then(Response => {
+      this.$http.get('roast/topic/answer/query/' + this.topicId).then(Response => {
         this.topicdetailList = Response.data.topicDetaildata
         console.log(Response.data.topicDetaildata)
       })
     },
     async getTopic () {
-      this.$http.get('tucao/topic/query/' + this.topicId).then(Res => {
+      this.$http.get('roast/topic/query/' + this.topicId).then(Res => {
         this.topic = Res.data.data
         console.log(this.topic)
       })
@@ -71,7 +71,7 @@ export default {
     showCommentClick: function (topicChildrenId) {
       this.commentShowBoolean = !this.commentShowBoolean
       console.log(topicChildrenId)
-      this.$http.get('tucao/topic/detail/querycomment/' + topicChildrenId).then(Res1 => {
+      this.$http.get('roast/topic/answer/querycomment/' + topicChildrenId).then(Res1 => {
         this.comment = Res1.data.commentReplyData
         // console.log('comment  ' + this.comment[0].commentId)
       })
