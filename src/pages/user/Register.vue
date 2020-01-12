@@ -3,8 +3,8 @@
     <h2 class="title" slot="title">用户注册</h2>
     <button type="button" aria-label="Close" class="el-dialog__headerbtn" @click.stop="cancelModal"><i class="el-dialog__close el-icon el-icon-close"></i></button>
     <el-form class="form-wrapper" ref="orderForm" :model="orderForm" :rules="addRules" label-width="110px">
-      <el-form-item label="用户名：" prop="userNickname">
-        <el-input v-model="orderForm.userNickname" type="text" placeholder="用户名"></el-input>
+      <el-form-item label="用户名：" prop="userName">
+        <el-input v-model="orderForm.userName" type="text" placeholder="用户名"></el-input>
       </el-form-item>
       <el-form-item label="密码：" prop="userPassword">
         <el-input v-model="orderForm.userPassword" type="text" placeholder="密码" show-password></el-input>
@@ -37,7 +37,7 @@ export default {
     return {
       orderForm: {},
       addRules: {
-        userNickname: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
         userPassword: [{ required: true, message: '请输入密码', trigger: 'blur' }],
         confirmUserPassword: [{ required: true, message: '请确认密码', trigger: 'blur' }, {
           validator: (rule, value, callback) => {
@@ -57,7 +57,7 @@ export default {
   methods: {
     initForm () {
       this.orderForm = {
-        userNickname: '',
+        userName: '',
         userPassword: '',
         confirmUserPassword: '',
         userPhone: '',
@@ -78,7 +78,7 @@ export default {
         formData.append(key, this.orderForm[key])
       }
       axios({
-        method: 'get',
+        method: 'post',
         url: 'http://localhost:8081/register',
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
@@ -87,9 +87,9 @@ export default {
         if (res.data.status === '200') {
           // 如果返回200，说明后端注册用户成功，关闭弹出窗口
           this.$emit('update:visible', false)
-          this.$emit('getRegisterUserNickname', res.data.userNickname)
+          this.$emit('getRegisterUserNickname', res.data.map.userNickname)
         } else {
-          this.$alert('该用户名已存在', '错误提示', {
+          this.$alert('注册错误', '错误提示', {
             confirmButtonText: '确定',
             callback: action => {
               this.$message({
