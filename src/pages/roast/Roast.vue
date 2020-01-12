@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="activeName" type="card" :stretch="true">
-    <ul class="infinite-list" infinite-scroll="load" style="overflow:auto">
+    <!-- <ul class="infinite-list" infinite-scroll="load" style="overflow:auto"> -->
     <div v-for="data in tucaoTopicList" :key=data.topicId class="infinite-list-item">
       <el-card class="box-card">
       <router-link :to="{name:'TopicAnswer', params: {'topicId':data.topicId}}"><div class="topicTitle">{{data.title}}</div></router-link>
@@ -22,16 +22,25 @@
           </div>
       </el-card>
       </div>
-  </ul>
+  <!-- </ul> -->
+ <el-pagination
+        @size-change="handleSizeChange"
+                            @current-change="handleCurrentChange"
+                            :current-page="currentPage"
+                            :page-sizes="[5, 10, 20, 40]"
+                            :page-size="pagesize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="tucaoTopicList.length">
+      ></el-pagination>
   </el-tabs>
 </template>
 <style scoped>
-.infinite-list{
+/* .infinite-list{
   padding-top:0%;
   padding-left:20%;
   padding-right:20%;
   padding-bottom:0%;
-}
+} */
 .contentAndImage{
   position:relative
 }
@@ -44,7 +53,7 @@
 }
 .demo-image{
   position:absolute;
-  left:95%
+  left:100%
 }
 .like {
   text-indent: 5px;
@@ -61,7 +70,7 @@ export default {
   data () {
     return {
       currentPage: 1, // 初始页
-      pagesize: 10, //    每页的数据
+      pagesize: 8, //    每页的数据
       tucaoTopicList: [],
       activeName: '',
       flowers: []
@@ -78,17 +87,20 @@ export default {
     },
     handleCurrentChange: function (currentPage) {
       this.currentPage = currentPage
-      console.log(this.currentPage) // 点击第几页
-    },
-    handleTucaoTopicList () {
-      this.$http.get('http://localhost:8081/roast/topic/queryAll').then(res => { // 这是从本地请求的数据接口，
+      this.$http.get('http://localhost:8081/roast/topic/pageQuery', { params: { p: this.currentPage, size: 8 } }).then(res => {
+        // console.log(res.data.data)
         this.tucaoTopicList = res.data.data
-        console.log(res.data.data)
       })
     },
-    load () {
-      this.tucaoTopicList += 2
+    handleTucaoTopicList () {
+      this.$http.get('http://localhost:8081/roast/topic/pageQuery').then(res => { // 这是从本地请求的数据接口，
+        this.tucaoTopicList = res.data.data
+        // console.log(res.data.data)
+      })
     }
+    // load () {
+    //   this.tucaoTopicList += 2
+    // }
   }
 }
 </script>

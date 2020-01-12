@@ -78,7 +78,7 @@ export default {
         formData.append(key, this.orderForm[key])
       }
       axios({
-        method: 'post',
+        method: 'get',
         url: 'http://localhost:8081/register',
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
