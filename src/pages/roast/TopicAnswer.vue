@@ -7,7 +7,8 @@
     <p style="padding-right:85%">
       {{topic.contentAbstract}}
     </p>
-    <p class="answerInputDiv">
+    <el-button type="primary" icon="el-icon-edit" @click="showAnswerInputClick">写回答</el-button>
+    <p class="answerInputDiv" v-show="answerInputShowBool">
       <answer-input></answer-input>
     </p>
     <p>测试</p>
@@ -50,7 +51,8 @@ export default {
       topicId: '',
       comment: [],
       commentShowBoolean: false,
-      detailExist: ''
+      detailExist: '',
+      answerInputShowBool: false
     }
   },
   created () {
@@ -81,6 +83,9 @@ export default {
         this.comment = Res1.data.commentReplyData
         // console.log('comment  ' + this.comment[0].commentId)
       })
+    },
+    showAnswerInputClick: function () {
+      this.answerInputShowBool = !this.answerInputShowBool
     }
   }
 }
