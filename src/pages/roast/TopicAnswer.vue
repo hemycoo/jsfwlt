@@ -11,7 +11,6 @@
     <p class="answerInputDiv" v-show="answerInputShowBool">
       <answer-input></answer-input>
     </p>
-    <p>测试</p>
   </div>
     <ul class="infinite-list" infinite-scroll="load">
       <div v-for="data in topicdetailList" :key="data" class="infinite-list-item">
