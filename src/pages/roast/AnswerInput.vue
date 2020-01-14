@@ -18,7 +18,7 @@ export default {
   methods: {
     commitAnswerClick: function () {
       let AnswerInsertReq = { 'topicId': this.topicId, 'content': this.textarea }
-      this.$http.post('/roast/topic/answer/insertcomment', AnswerInsertReq).then(res => {
+      this.$http.post('/roast/topic/answer/insertanswer', AnswerInsertReq).then(res => {
         console.log('res=>  ', res.data)
       })
     }
