@@ -16,6 +16,7 @@
   </el-dialog>
 </template>
 <script>
+import Cookies from 'js-cookie'
 export default {
   props: {
     visible: {
@@ -52,6 +53,7 @@ export default {
           // 如果返回200，说明用户登录成功，关闭弹出窗口
           this.$emit('update:visible', false)
           this.$emit('getLoginUserNickname', res.data.map.userNickname)
+          Cookies.set('token', res.data.map.token)
         } else {
           this.$alert('登录错误', '错误提示', {
             confirmButtonText: '确定',
