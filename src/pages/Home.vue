@@ -15,19 +15,15 @@
         <el-menu-item index="4">
           <a href="http://localhost:8081/tucao/topic/detail/query" target="_blank">测试后台</a>
         </el-menu-item>
-        <div class = "singUpAndRegister">
-        <ul v-if="!showButton">
+        <div class = "singUpAndRegister" v-show="!isLogin">
         <el-button type="primary" @click="handleClickForLogin">登录</el-button>
         <v-login v-on:getLoginUserNickname="getLoginUserNickname" v-if="modelShowForLogin" :visible.sync="modelShowForLogin"></v-login>
         <el-button type="primary" @click="handleClickForRegister">注册</el-button>
         <v-register v-on:getRegisterUserNickname="getRegisterUserNickname" v-if="modelShowForRegister" :visible.sync="modelShowForRegister"></v-register>
-        </ul>
         </div>
-        <div class = "showOfButton">
-        <ul v-if="showButton">
+        <div class = "userHome" v-show="isLogin">
         <el-image class = "head_img" :src="headPhotoUrl"></el-image>
         <span>{{userNickname}}</span>
-        </ul>
         </div>
       </el-menu>
     </el-header>
@@ -75,6 +71,14 @@ export default {
     getLoginUserNickname (msg) {
       this.userNickname = msg
       this.showButton = true
+    },
+    isLogin(){
+      if(sessionStorage.getItem("userName")&&sessionStorage.getItem("userToken")){
+        this.$store.commit("userStatus",sessionStorage.getItem("userNaME"));
+      }else{
+        this.$store.commit("userStatus",null);
+      }
+      return this.$store.getters.isLogin;
     }
   }
 }
