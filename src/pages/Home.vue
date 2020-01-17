@@ -15,6 +15,8 @@
         <el-menu-item index="4">
           <a href="http://localhost:8081/tucao/topic/detail/query" target="_blank">测试后台</a>
         </el-menu-item>
+        <div>
+        </div>
         <div class = "singUpAndRegister" v-show="!isLogin">
         <el-button type="primary" @click="handleClickForLogin">登录</el-button>
         <v-login v-on:getLoginUserNickname="getLoginUserNickname" v-if="modelShowForLogin" :visible.sync="modelShowForLogin"></v-login>
@@ -22,6 +24,8 @@
         <v-register v-on:getRegisterUserNickname="getRegisterUserNickname" v-if="modelShowForRegister" :visible.sync="modelShowForRegister"></v-register>
         </div>
         <div class = "userHome" v-show="isLogin">
+        <el-button @click="pushTopic">发布话题</el-button>
+        <v-pushTopic v-if="modelShowForPushTopic" :visible.sync="modelShowForPushTopic"></v-pushTopic>
         <el-image class = "head_img" :src="headPhotoUrl"></el-image>
         <span>{{userNickname}}</span>
         </div>
@@ -38,17 +42,20 @@
 import footer from '@/pages/Footer.vue'
 import login from '@/pages/user/Login.vue'
 import register from '@/pages/user/Register.vue'
+import pushTopic from '@/pages/roast/PushTopic.vue'
 export default {
   components: {
     'v-footer': footer,
     'v-login': login,
-    'v-register': register
+    'v-register': register,
+    'v-pushTopic': pushTopic
   },
   data () {
     return {
       activeIndex: '1',
       modelShowForLogin: false,
       modelShowForRegister: false,
+      modelShowForPushTopic: false,
       userNickname: sessionStorage.getItem('userName'),
       showButton: false,
       headPhotoUrl: 'https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=62d46c39067b020818c437b303b099b6/d4628535e5dde7119c3d076aabefce1b9c1661ba.jpg'
@@ -71,6 +78,9 @@ export default {
     getLoginUserNickname (msg) {
       this.userNickname = msg
       this.showButton = true
+    },
+    pushTopic () {
+      this.modelShowForPushTopic = true
     }
   },
   computed: {
