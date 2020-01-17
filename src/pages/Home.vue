@@ -49,7 +49,7 @@ export default {
       activeIndex: '1',
       modelShowForLogin: false,
       modelShowForRegister: false,
-      userNickname: '',
+      userNickname: sessionStorage.getItem('userName'),
       showButton: false,
       headPhotoUrl: 'https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=62d46c39067b020818c437b303b099b6/d4628535e5dde7119c3d076aabefce1b9c1661ba.jpg'
     }
@@ -71,14 +71,16 @@ export default {
     getLoginUserNickname (msg) {
       this.userNickname = msg
       this.showButton = true
-    },
-    isLogin(){
-      if(sessionStorage.getItem("userName")&&sessionStorage.getItem("userToken")){
-        this.$store.commit("userStatus",sessionStorage.getItem("userNaME"));
-      }else{
-        this.$store.commit("userStatus",null);
+    }
+  },
+  computed: {
+    isLogin () {
+      if (sessionStorage.getItem('userName') && sessionStorage.getItem('userToken')) {
+        this.$store.commit('userStatus', sessionStorage.getItem('userName'))
+      } else {
+        this.$store.commit('userStatus', null)
       }
-      return this.$store.getters.isLogin;
+      return this.$store.getters.isLogin
     }
   }
 }

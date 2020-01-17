@@ -54,13 +54,13 @@ export default {
           this.$emit('update:visible', false)
           this.$emit('getLoginUserNickname', res.data.map.userNickname)
           Cookies.set('token', res.data.map.token)
-          //将用户名和token放入sessionStorage
-          sessionStorage.setItem("userName",res.data.map.userNickname)
-          sessionStorage.setItem("userToken",res.data.map.token)
-          //将用户名放入vuex
-          this.$store.dispatch("setUser",res.data.map.userNickname)
-          this.$store.dispatch("setToken",res.data.map.token)
-          //打印login状态
+          // 将用户名和token放入sessionStorage
+          sessionStorage.setItem('userName', res.data.map.userNickname)
+          sessionStorage.setItem('userToken', res.data.map.token)
+          // 将用户名放入vuex
+          this.$store.dispatch('setUser', res.data.map.userNickname)
+          this.$store.dispatch('setToken', res.data.map.token)
+          // 打印login状态
           console.log(this.$store.state.isLogin)
         } else {
           this.$alert('登录错误', '错误提示', {
